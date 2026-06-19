@@ -1,0 +1,56 @@
+<mat-card class="contenedor">
+  <h1>{{ esEdicion ? 'Editar' : 'Registrar' }} Microscopio</h1>
+
+  <form [formGroup]="formulario" (ngSubmit)="guardar()">
+    <div class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="codigo" placeholder="888-8888888">
+        <mat-error *ngIf="codigo?.hasError('required')">El código es obligatorio</mat-error>
+        <mat-error *ngIf="codigo?.hasError('pattern')">Use el formato 888-8888888</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Marca</mat-label>
+        <mat-select formControlName="marca">
+          @for (marca of marcas; track marca) {
+            <mat-option [value]="marca">{{ marca }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="marca?.hasError('required')">La marca es obligatoria</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Precio (S/.)</mat-label>
+        <input matInput type="number" formControlName="precio" step="0.01">
+        <mat-error *ngIf="precio?.hasError('required')">El precio es obligatorio</mat-error>
+        <mat-error *ngIf="precio?.hasError('min')">El precio debe ser mayor a cero</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha de fabricación</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaFabricacion" placeholder="DD/MM/YYYY">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="fechaFabricacion?.hasError('required')">La fecha es obligatoria</mat-error>
+        <mat-error *ngIf="fechaFabricacion?.hasError('fechaInvalida')">La fecha debe ser anterior al 2/14/2026</mat-error>
+      </mat-form-field>
+
+      <div class="radio-container form-full-width">
+        <mat-label>Estado del Equipo</mat-label>
+        <mat-radio-group formControlName="estado">
+          <mat-radio-button value="true" color="primary">En uso</mat-radio-button>
+          <mat-radio-button value="false" color="primary">Disponible</mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="estado?.hasError('required')">El estado es obligatorio</mat-error>
+      </div>
+    </div>
+
+    <button class="boton-rosado" mat-flat-button type="submit">
+      <span style="display:flex; align-items:center; gap:8px; justify-content:center;">
+        <mat-icon style="font-size:18px; width:18px; height:18px;">save</mat-icon>
+        Grabar Cambios
+      </span>
+    </button>
+  </form>
+</mat-card>

@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+// ─── Design Tokens ───────────────────────────────────────
+$bg-app: #f5f6fa;
+$bg-card: #ffffff;
+$text-primary: #1a1a2e;
+$text-secondary: #64748b;
+$text-muted: #94a3b8;
+$border-light: #e8ecf1;
+$accent-indigo: #6366f1;
+$accent-indigo-light: rgba(99, 102, 241, 0.06);
+$accent-rose: #e11d73;
+$accent-rose-light: rgba(225, 29, 115, 0.06);
+$accent-green: #10b981;
+$accent-green-light: rgba(16, 185, 129, 0.08);
+$accent-blue: #3b82f6;
+$accent-red: #ef4444;
+$accent-red-light: rgba(239, 68, 68, 0.06);
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.05);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.07);
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 20px;
+$radius-full: 9999px;
+
+// ─── Reset & Base ────────────────────────────────────────
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: $bg-app;
+  color: $text-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+// ─── Scrollbar ───────────────────────────────────────────
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+// ─── Card Container ─────────────────────────────────────
+.contenedor {
+  max-width: 1120px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem !important;
+  border-radius: $radius-lg !important;
+  background: $bg-card !important;
+  border: 1px solid $border-light !important;
+  box-shadow: $shadow-md !important;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: $shadow-lg !important;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0 0 1.75rem 0;
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .title-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: $radius-sm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+  }
+}
+
+// ─── Table ──────────────────────────────────────────────
+.mat-mdc-table {
+  background: transparent !important;
+  border-radius: $radius-md !important;
+  border: 1px solid $border-light;
+  overflow: hidden;
+}
+
+.mat-mdc-header-row {
+  background-color: #f8f9fb !important;
+}
+
+.mat-mdc-header-cell {
+  color: $text-muted !important;
+  font-weight: 600 !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 16px !important;
+  border-bottom: 1px solid $border-light !important;
+}
+
+.mat-mdc-row {
+  transition: background-color 0.15s ease;
+  &:hover {
+    background-color: $accent-indigo-light !important;
+  }
+  &:last-child .mat-mdc-cell {
+    border-bottom: none !important;
+  }
+}
+
+.mat-mdc-cell {
+  padding: 14px 16px !important;
+  font-size: 0.85rem !important;
+  color: $text-primary !important;
+  border-bottom: 1px solid #f1f3f7 !important;
+}
+
+// ─── Status Badge ───────────────────────────────────────
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: $radius-full;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  &.en-uso {
+    background: $accent-green-light;
+    color: #065f46;
+    .dot { background: $accent-green; }
+  }
+
+  &.disponible {
+    background: #f1f5f9;
+    color: #475569;
+    .dot { background: #94a3b8; }
+  }
+}
+
+// ─── Marca Badge ────────────────────────────────────────
+.marca-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: $radius-full;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: $accent-indigo-light;
+  color: $accent-indigo;
+  letter-spacing: 0.02em;
+}
+
+// ─── Code Monospace ─────────────────────────────────────
+.code-text {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  color: $text-secondary;
+  background: #f8f9fb;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+// ─── Action Buttons in Table ────────────────────────────
+.action-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.btn-action {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  padding: 0 !important;
+  border-radius: $radius-sm !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+
+  mat-icon, .mat-icon {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  &.btn-edit {
+    background: $accent-indigo-light !important;
+    color: $accent-indigo !important;
+    border: 1px solid rgba(99, 102, 241, 0.15) !important;
+    &:hover {
+      background: rgba(99, 102, 241, 0.12) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15) !important;
+    }
+  }
+
+  &.btn-delete {
+    background: $accent-red-light !important;
+    color: $accent-red !important;
+    border: 1px solid rgba(239, 68, 68, 0.15) !important;
+    &:hover {
+      background: rgba(239, 68, 68, 0.12) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15) !important;
+    }
+  }
+}
+
+// ─── Material Form Fields ───────────────────────────────
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+// ─── Paginator ──────────────────────────────────────────
+.mat-mdc-paginator {
+  background: transparent !important;
+  color: $text-secondary !important;
+  font-size: 0.8rem !important;
+  border-top: 1px solid $border-light;
+  margin-top: 0.5rem;
+}
+
+// ─── Snackbar ───────────────────────────────────────────
+.mat-mdc-snack-bar-container {
+  border-radius: $radius-sm !important;
+}
+
+// ─── Dialog ─────────────────────────────────────────────
+.mat-mdc-dialog-container {
+  border-radius: $radius-lg !important;
+}
+
+.estado-2 {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &.en-uso {
+    background: rgba(16, 185, 129, 0.08);
+    color: #065f46;
+  }
+
+  &.disponible {
+    background: #f1f5f9;
+    color: #475569;
+  }
+}

@@ -1,0 +1,12 @@
+# Frontend Angular
+Fronted_API/node_modules/
+Fronted_API/dist/
+
+# Backend Spring
+Backend_API_Microscopios/target/
+
+# Logs
+*.log
+
+# Env files
+.env

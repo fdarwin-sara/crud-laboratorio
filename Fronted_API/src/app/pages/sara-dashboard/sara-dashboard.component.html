@@ -1,0 +1,24 @@
+@if (routeUrl.endsWith('/nuevo')) {
+  <app-sara-crear (microscopioCreado)="crear($event)"></app-sara-crear>
+}
+
+@if (routeUrl.endsWith('/listar')) {
+  <app-sara-listar
+    [lista]="microscopios"
+    (microscopioEliminado)="solicitarEliminar($event)">
+  </app-sara-listar>
+}
+
+@if (routeUrl.endsWith('/eliminar')) {
+  <app-sara-eliminar
+    [lista]="microscopios"
+    (microscopioEliminado)="solicitarEliminar($event)">
+  </app-sara-eliminar>
+}
+
+@if (routeUrl.includes('/sara/editar/')) {
+  <app-sara-crear
+    [microscopio]="microscopioParaEditar"
+    (microscopioEditado)="actualizar($event)">
+  </app-sara-crear>
+}
